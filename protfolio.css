@@ -1,0 +1,646 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* CSS Variables for Light Mode */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6c757d;
+    --color-primary: #00a3ff;
+    --color-secondary: #00d084;
+    --border-color: #e9ecef;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --bg-primary: #0f1419;
+    --bg-secondary: #1a1f26;
+    --text-primary: #f8f9fa;
+    --text-secondary: #adb5bd;
+    --border-color: #2d3338;
+    --card-bg: #1a1f26;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, rgba(0, 163, 255, 0.05), rgba(0, 208, 132, 0.05), rgba(0, 163, 255, 0.08), rgba(0, 208, 132, 0.08));
+        border: 2px solid rgba(255,255,255,0.6);
+    animation: gradient-shift 15s ease infinite;
+    z-index: -4; /* put gradient furthest behind so other layers can sit above */
+}
+
+body.dark-mode::before {
+
+    body.dark-mode .section-char-img {
+        background: #11161b;
+        border: 2px solid rgba(255,255,255,0.06);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    background: linear-gradient(-45deg, rgba(0, 163, 255, 0.1), rgba(0, 208, 132, 0.1), rgba(0, 163, 255, 0.15), rgba(0, 208, 132, 0.15));
+    background-size: 400% 400%;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Wave Animations */
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) translateX(10px) rotate(0.5deg);
+    }
+    50% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(10px) translateX(-10px) rotate(-0.5deg);
+    }
+}
+
+@keyframes wave-slow {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-15px) scale(1.02);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05) translateY(-5px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Starfield canvas */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* allow clicks through */
+    z-index: -1; /* above the gradient but behind page content */
+    display: block;
+}
+
+/* Blend mode: light/dark theme aware */
+body.dark-mode #starfield {
+    mix-blend-mode: screen; /* white stars pop on dark backgrounds */
+}
+
+/* Light mode: use default background color and snowfall only */
+body:not(.dark-mode) {
+    background-image: none;
+    background-color: var(--bg-primary);
+    --text-primary: #1a1a1a; /* ensure readable text color */
+}
+
+/* Sea waves background (light mode) */
+#sea-waves {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40vh;
+    pointer-events: none;
+    z-index: -3; /* behind bloom (-2) and canvas (-1) */
+    opacity: 0.95;
+    overflow: hidden;
+}
+
+#sea-waves svg { width: 100%; height: 100%; display: block; }
+
+.wave { transform-origin: center; }
+.wave--back { animation: wave-back 18s linear infinite; }
+.wave--mid { animation: wave-mid 12s linear infinite; }
+.wave--front { animation: wave-front 8s linear infinite; }
+
+@keyframes wave-back { 0% { transform: translateX(0) translateY(0);} 50% { transform: translateX(-40px) translateY(6px);} 100% { transform: translateX(0) translateY(0);} }
+@keyframes wave-mid { 0% { transform: translateX(0) translateY(0);} 50% { transform: translateX(60px) translateY(-6px);} 100% { transform: translateX(0) translateY(0);} }
+@keyframes wave-front { 0% { transform: translateX(0) translateY(0);} 50% { transform: translateX(-90px) translateY(10px);} 100% { transform: translateX(0) translateY(0);} }
+
+/* Only show in light mode */
+body.dark-mode #sea-waves { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .wave--back, .wave--mid, .wave--front { animation: none !important; }
+}
+
+/* Section characters (floating assistant images) */
+.section-char-img {
+    position: fixed;
+    right: 2rem;
+    bottom: 4rem;
+    width: 110px;
+    height: auto;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    transition: opacity 400ms ease, transform 400ms ease;
+    will-change: opacity, transform;
+    z-index: 999; /* above content */
+}
+
+/* Make the characters appear background-free using circular mask + backdrop */
+.section-char-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    display: block;
+    box-shadow: 0 6px 18px rgba(6,18,30,0.12);
+    border: 3px solid rgba(255,255,255,0.6);
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 100%);
+    mask-image: radial-gradient(circle, #000 60%, transparent 100%);
+    backdrop-filter: blur(4px) saturate(1.02);
+}
+.section-char-img.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.section-char-img.animate {
+    animation: char-respond 1.6s ease-in-out;
+}
+
+@keyframes char-respond {
+    0% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-12px) rotate(-4deg); }
+    60% { transform: translateY(-6px) rotate(4deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@media (max-width: 900px) {
+    .section-char-img { width: 86px; right: 1rem; bottom: 3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section-char-img, .section-char-img.animate { transition: none !important; animation: none !important; }
+    .section-char-img { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Make cards more readable against the mountain background in light mode */
+body:not(.dark-mode) .card {
+    background-color: rgba(255,255,255,0.94);
+    border-color: rgba(220,230,240,0.9);
+    box-shadow: 0 6px 18px rgba(6,18,30,0.06);
+}
+
+/* Watercolor bloom (light mode) */
+body:not(.dark-mode) #watercolor-bloom {
+    position: fixed;
+    left: 10%;
+    top: 6%;
+    width: 70vw;
+    height: 60vh;
+    pointer-events: none;
+    z-index: -2; /* behind canvas (-1) so snowfall appears above the bloom */
+    opacity: 0.26;
+    filter: blur(36px) saturate(1.05);
+    background: radial-gradient(60% 50% at 30% 30%, rgba(255,220,210,0.95), rgba(255,235,225,0.85) 35%, rgba(255,245,240,0.65) 60%, rgba(255,255,255,0));
+    transform-origin: center;
+    animation: bloom-pulse 9s ease-in-out infinite;
+}
+
+@keyframes bloom-pulse {
+    0% { transform: scale(0.98); opacity: 0.22; filter: blur(34px) saturate(1); }
+    50% { transform: scale(1.04); opacity: 0.30; filter: blur(30px) saturate(1.08); }
+    100% { transform: scale(0.98); opacity: 0.22; filter: blur(34px) saturate(1); }
+}
+
+/* Make watercolor subtle on small screens */
+@media (max-width: 768px) {
+    body:not(.dark-mode) #watercolor-bloom {
+        left: 6%;
+        top: 10%;
+        width: 90vw;
+        height: 44vh;
+        opacity: 0.22;
+        filter: blur(30px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body:not(.dark-mode) #watercolor-bloom {
+        animation: none;
+        transition: none;
+        opacity: 0.22;
+    }
+}
+body:not(.dark-mode) #starfield {
+    mix-blend-mode: normal; /* use normal blend for snowfall on light backgrounds */
+    z-index: -1; /* keep canvas above mountain background */
+}
+
+body.dark-mode {
+    background-image: none; /* no mountain in dark mode */
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    #starfield {
+        display: none;
+    }
+    body::before {
+        animation: none;
+    }
+}
+
+.wave-section {
+    animation: wave-slow 6s ease-in-out infinite;
+}
+
+.wave-section:nth-child(even) {
+    animation-delay: 1s;
+}
+
+.wave-card {
+    animation: ripple 4s ease-in-out infinite;
+}
+
+.wave-card:nth-child(odd) {
+    animation-delay: 0.5s;
+}
+
+.wave-card:nth-child(even) {
+    animation-delay: 1.5s;
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+}
+
+.animate-scale-in {
+    animation: scale-in 0.4s ease-out;
+}
+
+/* Typography */
+h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background-color: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-hover);
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section-alt {
+    background-color: var(--bg-secondary);
+}
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+/* Profile Image */
+.profile-image {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 4px solid var(--color-primary);
+    box-shadow: 0 0 40px rgba(0, 163, 255, 0.3);
+}
+
+
+
+/* (Removed SVG character animation rules) */
+
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--color-primary);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+    border: none;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--color-secondary);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.icon-sm {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-primary);
+}
+
+.card-title {
+    color: var(--text-primary);
+}
+
+.card-text {
+    color: var(--text-secondary);
+}
+
+/* Badges */
+.badge {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+}
+
+/* Icon Box */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-lg {
+    width: 28px;
+    height: 28px;
+    color: white;
+}
+
+/* Internship List */
+.internship-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.internship-list li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.internship-list li::before {
+    content: "•";
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Skills */
+.skill-bar {
+    height: 16px;
+    background-color: var(--bg-secondary);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    width: 0;
+    transition: width 1.5s ease-out;
+    border-radius: 1rem;
+}
+
+/* REMOVE any .skill-item.animate .skill-progress animation block */
+
+
+/* Footer */
+.footer {
+    padding: 3rem 0;
+    border-top: 2px solid var(--border-color);
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0, 163, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.social-link i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+}
+
+/* Text Colors */
+.text-primary {
+    color: var(--color-primary) !important;
+}
+
+.text-secondary {
+    color: var(--color-secondary) !important;
+}
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Bruce M - Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Rohan Bruce M - Mechanical Engineering Student passionate about sustainability and frontend development">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="protfolio.css">
+</head>
+
+<body class="light-mode">
+
+    <canvas id="starfield"></canvas>
+    <div id="watercolor-bloom" aria-hidden="true"></div>
+    <div id="sea-waves" aria-hidden="true">
+
+    </div>
+    <button id="themeToggle" class="theme-toggle">
+        <span class="moon-icon">🌙</span>
+        <span class="sun-icon" style="display:none;">☀️</span>
+    </button>
+
+
+    <section class="hero-section wave-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start mb-5 mb-lg-0 animate-fade-in">
+                    <h1 class="display-1 fw-bold mb-4">
+                        <span class="gradient-text">Rohan Bruce M</span>
+                    </h1>
+                    <p class="lead mb-5">
+                        Web Dev: React.js, BOOTSTRAP, HTML/CSS/JS | Smart Home E-commerce Project| Python | Mechanical
+                        Engineering Student| TIDC intern|TUNGA aerospace systems intern
+                        <span class="text-primary fw-semibold">sustainability</span> and
+                        <span class="text-secondary fw-semibold">frontend development</span>
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                        <a href="https://www.linkedin.com/in/rohan-bruce-m-7491b9257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            target="_blank" class="btn btn-primary btn-lg">
+                            <i data-lucide="linkedin" class="icon-sm"></i>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/RohanBruce-M" target="_blank"
+                            class="btn btn-outline-primary btn-lg">
+                            <i data-lucide="github" class="icon-sm"></i>
+                            GitHub
+                        </a>
+                        <a href="MRB.pdf" download class="btn btn-secondary btn-lg">
+                            <i data-lucide="download" class="icon-sm"></i>
+                            Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center animate-scale-in">
+                    <div class="profile-image float-animation">
+                        <div class="profile-placeholder">
+                            <img src="profile.jpeg" alt="Rohan Bruce"
+                                style="width:100%;height:100%;object-fit:cover;display:block;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section wave-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center animate-fade-in">
+                    <h2 class="gradient-text">About Me</h2>
+                    <p class="lead text-muted mt-3">I'm Rohan Bruce, a Mechanical Engineering student who bridges
+                        engineering and frontend development. I build thoughtful, accessible interfaces and work on
+                        sustainable tech projects that solve real problems.</p>
+                    <ul class="mt-3 text-muted list-unstyled">
+                        <li>Mechanical Engineering background with practical internship experience.</li>
+                        <li>Frontend development: HTML, CSS, Bootstrap, JavaScript, React.</li>
+                        <li>Passionate about sustainability and designing user-focused solutions.</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#projects" class="btn btn-primary btn-lg">View Projects</a>
+                        <a href="mailto:rohanbruce2004@example.com" class="btn btn-outline-primary btn-lg ms-3">Contact
+                            Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section wave-section">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text animate-fade-in">Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card wave-card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Smart Home E-Commerce Website</h3>
+                            <p class="card-text text-muted">A stylish, fully responsive e-commerce platform designed for
+                                smart home products. Built using only HTML, CSS, and Bootstrap, it features intuitive
+                                product listings, detailed item pages, and a modern homepage layout. The site showcases
+                                clean UI design, smooth navigation, and mobile-friendly layouts—providing a seamless
+                                shopping experience without relying on JavaScript. This project highlights strong skills
+                                in front-end structure, custom styling, and Bootstrap-based responsiveness.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge">HTML</span>
+                                <span class="badge">CSS</span>
+                                <span class="badge">Bootstrap</span>
+                            </div>
+                            <div class="mt-3">
+                                <a href="https://eccomerce-website-for-smart-home-fr.vercel.app/" target="_blank" class="btn btn-primary btn-sm">Live
+                                    Demo</a>
+                                <a href="https://github.com/RohanBruce-M/ECCOMERCE-WEBSITE-FOR-SMART-HOME" target="_blank"
+                                    class="btn btn-outline-primary btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card wave-card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">Youtube clone</h3>
+                            <p class="card-text text-muted">A modern YouTube-inspired web app built with React.js and
+                                enhanced by GSAP animations. It features a responsive video feed, live search, single
+                                video pages, and animated UI transitions for a smooth, app-like user experience. Modular
+                                React components and GSAP motion effects make the platform engaging and showcase
+                                advanced frontend skills.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge">HTML</span>
+                                <span class="badge">CSS</span>
+                                <span class="badge">Bootstrap</span>
+                                <span class="badge">JavaScript</span>
+                                <span class="badge">React.js</span>
+                                <span class="badge">GSAP</span>
+
+                            </div>
+
+                            <div class="mt-3">
+                                <a href="https://youtube-clone-xi-swart.vercel.app/" target="_blank" class="btn btn-primary btn-sm">Live
+                                    Demo</a>
+                                <a href="https://github.com/RohanBruce-M/youtube-clone" target="_blank"
+                                    class="btn btn-outline-primary btn-sm">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="internships" class="section section-alt wave-section">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text animate-fade-in">Internships</h2>
+            <div class="row g-4">
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section wave-section">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text animate-fade-in">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item" data-level="90">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">HTML</span>
+                        <span class="text-muted">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-level="85">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">CSS</span>
+                        <span class="text-muted">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-level="80">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Bootstrap</span>
+                        <span class="text-muted">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-level="75">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">JavaScript</span>
+                        <span class="text-muted">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-level="85">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Microsoft Office Tools</span>
+                        <span class="text-muted">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-level="70">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">AutoCAD</span>
+                        <span class="text-muted">70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item" data-level="80">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Git</span>
+                        <span class="text-muted">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <div class="skill-item" data-level="80">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">React.js</span>
+                        <span class="text-muted">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    </div>
+    </div>
+    </section>
+
+    <section id="education" class="section section-alt wave-section">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text animate-fade-in">Education</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <div class="card wave-card">
+                        <div class="card-body">
+                            <div class="d-flex gap-3 mb-3">
+                                <div class="icon-box">
+                                    <i data-lucide="graduation-cap" class="icon-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="card-title mb-2">Rajalakshmi institute of technology</h3>
+                                    <p class="text-muted">Currently pursuing Bachelor's degree in Mechanical Engineering
+                                    </p>
+                                    <p class="text-muted">CGPA: 7.9</p>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">Focused on sustainable engineering practices and developing
+                                skills in both mechanical design and modern web development technologies.</p>
+                        </div>
+                    </div>
+
+                    <div class="card wave-card mt-4">
+                        <div class="card-body">
+                            <div class="d-flex gap-3 mb-3">
+                                <div class="icon-box">
+                                    <i data-lucide="school" class="icon-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="card-title mb-2">Higher Secondary Certificate (HSC)</h3>
+                                    <p class="text-muted">Ramachandra Matriculation Higher Secondary School, Chennai</p>
+                                    <p class="text-muted">Year: 2021–2022</p>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">Focused on science stream and achieved strong result.</p>
+                        </div>
+                    </div>
+
+                    <div class="card wave-card mt-4">
+                        <div class="card-body">
+                            <div class="d-flex gap-3 mb-3">
+                                <div class="icon-box">
+                                    <i data-lucide="book-open" class="icon-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="card-title mb-2">Secondary School Leaving Certificate (SSLC)</h3>
+                                    <p class="text-muted">Ramachandra Matriculation Higher Secondary School, Chennai</p>
+                                    <p class="text-muted">Year: 2019–2020</p>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">Completed schooling with strong academic foundation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <h3 class="gradient-text mb-2">Rohan Bruce M</h3>
+                    <p class="text-muted mb-0">
+                        Mechanical Engineering Student | Sustainability Enthusiast | Frontend Developer
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex gap-3 justify-content-center justify-content-md-end">
+                        <a href="https://www.linkedin.com/in/rohan-bruce-m-7491b9257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            target="_blank" class="social-link">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="https://github.com/RohanBruce-M" target="_blank" class="social-link">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="mailto:rohanbruce2004@example.com" class="social-link">
+                            <i data-lucide="mail"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-top">
+                <p class="text-muted mb-0">&copy; <span id="year"></span> Rohan Bruce M. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.skill-item').forEach(item => {
+            const progress = item.querySelector('.skill-progress');
+            const level = item.dataset.level;
+            progress.style.width = '0';
+            setTimeout(() => {
+                progress.style.width = level + '%';
+            }, 300);
+        });
+    });
+</script>
